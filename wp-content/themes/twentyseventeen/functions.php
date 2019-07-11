@@ -662,3 +662,23 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+
+/*
+function create_posttype() {
+    register_post_type('usuarios',
+        array(
+            'labels' => array(
+                'name' => __('Usuarios'),
+                'singular_name' => __('Usuario')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array(
+                'slug' => 'usuario'
+            )
+        )
+    );
+}
+
+add_action ('init', 'create_posttype');
+*/

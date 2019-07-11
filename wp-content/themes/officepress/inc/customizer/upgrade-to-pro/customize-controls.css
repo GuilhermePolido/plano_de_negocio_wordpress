@@ -1,0 +1,24 @@
+#customize-controls .control-section-officepress .accordion-section-title:hover,
+#customize-controls .control-section-officepress .accordion-section-title:focus {
+	background-color: #2644a6;
+	color: #fff;
+}
+
+.control-section-officepress .accordion-section-title .button {
+	margin-top:  -4px;
+	font-weight: 400;
+	margin-left: 8px;
+	background-color: #f95027;
+	border-color: #f95027;
+	color: #fff;
+}
+
+.rtl .control-section-officepress .accordion-section-title .button {
+	margin-left:  0;
+	margin-right: 8px;
+}
+
+li#accordion-section-officepress h3.accordion-section-title {
+    background-color: #2644a6;
+    color: #fff;
+}

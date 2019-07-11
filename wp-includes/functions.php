@@ -7165,3 +7165,66 @@ function is_wp_version_compatible( $required ) {
 function is_php_version_compatible( $required ) {
 	return empty( $required ) || version_compare( phpversion(), $required, '>=' );
 }
+
+function get_connection_database () {
+    $servername = "localhost";
+    $database = "wordpress";
+    $username = "root";
+    $password = "";
+    $conn = mysqli_connect($servername, $username, $password, $database);    
+    return $conn;
+}
+
+function close_connection_database ( $conn ) {
+    mysqli_close($conn);
+}
+
+function get_plano_negocio_id ( $userid ) {
+    $conn = get_connection_database();
+    
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+ 
+    $sql = "SELECT id FROM planonegocio WHERE user_id = ".$userid."";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+          return mysqli_fetch_array($query)['id'];
+    } else {
+          return -1;
+    }
+
+    close_connection_database($conn);
+}
+
+function create_plano_negocio ( $userid ) {
+    $conn = get_connection_database();
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "INSERT INTO planonegocio (user_id) VALUES (".$userid.")";
+    if (mysqli_query($conn, $sql)) {
+        return 1;
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return -1;
+    }
+    close_connection_database($conn);
+}
+
+function gererical_insert ( $sql ) {
+    $conn = get_connection_database();
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = $sql;
+    if (mysqli_query($conn, $sql)) {
+        return 1;
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        return -1;
+    }
+    close_connection_database($conn);
+}
